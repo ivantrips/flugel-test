@@ -1,0 +1,23 @@
+---
+driver:
+  name: terraform
+  variable_files:
+    - testing.tfvars
+
+provisioner:
+  name: terraform
+
+platforms:
+  - name: ubuntu
+
+verifier:
+  name: terraform
+  systems:
+    - name: basic
+      backend: local
+      controls:
+        - operating_system
+        - s3_content
+        - s3_object_content
+suites:
+  - name: default
